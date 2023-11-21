@@ -1,0 +1,18 @@
+Package: trajecto
+Type: Package
+Title: Analyse des données de télémétrie des poissons du Rhône
+Version: 0.0.0.9000
+Authors@R: c(
+    person(given   = "Dominique",
+           family  = "Lamonica",
+           role    = c("aut", "cre", "cph"),
+           email   = "dominique.lamonica@gmail.com",
+           comment = c(ORCID = "{{orcid}}")))
+Description: A paragraph providing a full description of the project (on 
+    several lines...)
+URL: https://github.com/lamonica-d/trajecto
+BugReports: https://github.com/lamonica-d/trajecto/issues
+License: {{license}}
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
