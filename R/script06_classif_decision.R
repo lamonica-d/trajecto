@@ -5,6 +5,8 @@
 #######################################################################################
 
 
+classif_decision <- function(){
+
 load("outputs/df_rf_a")
 load("outputs/diff_surface_list")
 load("outputs/matrice_curves_list")
@@ -12,6 +14,8 @@ load("outputs/matrice_proba_curves_list")
 load("outputs/clust_list")
 
 #plot inertie
+
+pdf(file="figures/plot_inertie.pdf")
 par(mfrow=c(1,6))
 for (j in 1:6){
   clust_list[[j]]=clust_coeff
@@ -19,15 +23,17 @@ for (j in 1:6){
   plot(inertie, pch=16, main=j, xlim=c(0,10))
   abline(h=10, lty=2)
 }
+dev.off()
 
-#hoisir le nombre de classes
+
+#choisir le nombre de classes
 nb_classe=c(4,2,4,2,2,3) #jour #-1.5,1.5
-nb_classe=c(2,2,3,2,3,3) #jour #-2,2
+#nb_classe=c(2,2,3,2,3,3) #jour #-2,2
 
 #plot les dendrogrammes
-dend_list=list()
-#pdf("plot_cluster.pdf", height = 15, width = 15)
-par(mfrow=c(1,1))
+ dend_list=list()
+# #pdf("plot_cluster.pdf", height = 15, width = 15)
+# par(mfrow=c(1,1))
 for (j in 1:6){
   clust_coeff=clust_list[[j]]
   dend <- as.dendrogram(clust_coeff)
@@ -36,18 +42,18 @@ for (j in 1:6){
     set("labels_cex", 0.01)
   #set("branches_lty", c(1,2,1))
   labels(dend) <- df_rf_a$individual[clust_coeff$order] #species[clust_coeff$order] #nbtraj[clust_coeff$order]#
-  plot(dend, main =j)
+#  plot(dend, main =j)
   dend_list[[j]]=dend
 }
 
-above=c(12,4,1.8,3.8,4.5,3)
-below=c(15,12,8.2,5,6,6)  #jour -2,2
+# above=c(12,4,1.8,3.8,4.5,3)
+# below=c(15,12,8.2,5,6,6)  #jour -2,2
 
-#above=c(4,2.5,1.05,2,2,1.5)
-#below=c(8,8,3,3,5,5)  #jour -1.5,1.5
+# above=c(4,2.5,1.05,2,2,1.5)
+# below=c(8,8,3,3,5,5)  #jour -1.5,1.5
 
-abline(h=above[j], lty=2) #verif du nombre de groupes
-abline(h=below[j], lty=2) 
+# abline(h=above[j], lty=2) #verif du nombre de groupes
+# abline(h=below[j], lty=2) 
 
 nb_gp_list=list()
 for (j in 1:6){
@@ -56,15 +62,15 @@ for (j in 1:6){
                                  id = which(dend %>% get_nodes_attr("height") > above[j] &dend %>% get_nodes_attr("height")< below[j])))
   
   #-2,2
-  if (j==2) {nb_gp=c(nb_gp[1:2])}
-  if (j==3) {nb_gp=c(nb_gp[1:3])}
-  if (j==5) {nb_gp=c(nb_gp[1],18*replicats-sum(nb_gp[1:2]),nb_gp[2])}
+  # if (j==2) {nb_gp=c(nb_gp[1:2])}
+  # if (j==3) {nb_gp=c(nb_gp[1:3])}
+  # if (j==5) {nb_gp=c(nb_gp[1],18*replicats-sum(nb_gp[1:2]),nb_gp[2])}
   
   
   #-1.5,1.5
-  # if (j==1|j==3) {nb_gp=c(nb_gp[1],18*replicats-sum(nb_gp[1:3]),nb_gp[2],nb_gp[3])}
-  # if (j==2|j==5) {nb_gp=c(nb_gp[1:2])}
-  # if (j==6) {nb_gp=c(nb_gp[1:3])}
+  if (j==1|j==3) {nb_gp=c(nb_gp[1],18*replicats-sum(nb_gp[1:3]),nb_gp[2],nb_gp[3])}
+  if (j==2|j==5) {nb_gp=c(nb_gp[1:2])}
+  if (j==6) {nb_gp=c(nb_gp[1:3])}
   
   #nuit
   # if (j==2) {nb_gp=nb_gp[c(1:2)]}
@@ -119,3 +125,6 @@ for (j in 1:6){
 
 save(tables_list, "outputs/tables_list")
 save(gp_list_list, "outputs/gp_list_list")
+save(nb_gp_list, "outputs/gp_list_list")
+
+}
