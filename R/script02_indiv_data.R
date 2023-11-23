@@ -278,5 +278,6 @@ prepa2<-function(){
 # sum(is.na(data_ind$hmod))
 # sum(is.na(data_ind$temp))
 
+  
 
 }
