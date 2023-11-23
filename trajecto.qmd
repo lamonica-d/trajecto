@@ -1,0 +1,38 @@
+---
+title: "trajecto"
+format: html
+---
+
+# Description
+
+This quarto file was produced during the EcoStat cours in Montpellier as part of the excercise 4 on Targets. This file is supposed to be integrated in the target pipeline. To make things smooth, small chunks of code should only incude calls to the 'tar_target' functions defined in my targettest.R file.
+
+# Beforehand
+
+## Packages
+
+These are the packages I used for my file **test_targets.R** file.
+
+```{r}
+# library(targets)
+# library(tarchetypes)
+# library(ggplot2)
+# library(visNetwork)
+```
+
+These are the packages I might use this file *.qmd*.
+
+## Setup
+
+These are the parameters to apply to this whole document (**report_targets.qmd**).
+
+```{r}
+#| label: setup
+#| echo: false
+#| include: false
+#| eval: true
+#| message: false
+#| collapse: true
+
+library(targets)
+```
