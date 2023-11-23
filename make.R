@@ -29,3 +29,7 @@ devtools::load_all(here::here())
 
 # List all R scripts in a sequential order and using the following form:
 # source(here::here("analyses", "script_X.R"))
+
+## Run Targets
+tar_make()
+targets::tar_visnetwork()
