@@ -11,8 +11,9 @@ prepa2<-function(){
   numpoiss_vect=c(3100,3156,3744,3128,3170,3051,3317,3674,3828,3856,3632,3786,3835,3849,3870,3772,3800,3387,3415,3429,
                   3183,3212,3240,3352,3464,3730,3758,3121,3394,3408,3422,3506,3562,3590,3625,3079,3303)
   
-  data8_sup2=read.table(file="data_tous_individus_ready_to_use_v4.csv", header=T, sep=",")[,-1]
+  data8_sup2=read.table(file="outputs/data_tous_individus_ready_to_use_v4.csv", header=T, sep=",")[,-1]
   
+  ###BOUCLE À METTRE
   ###choose which individual
   num_ind=1
   poiss=1:length(numpoiss_vect)
@@ -276,6 +277,7 @@ prepa2<-function(){
 # sum(is.na(data_ind$hmod))
 # sum(is.na(data_ind$temp))
 
-  
+  save(data_ind, file = paste0("outputs/data_ind",numpoiss_vect[num_ind],sep="")
+  )
 
 }

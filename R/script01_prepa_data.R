@@ -125,6 +125,6 @@ for (i in 2:length(poiss)){
   data8_sup2=rbind(data8_sup2,temp2[temp2$sqcont_new %in% section_sup2[[i]],])
 }
 
-write.csv(data8_sup2, file="data_tous_individus_ready_to_use.csv")
+write.csv(data8_sup2, file="outputs/data_tous_individus_ready_to_use.csv")
 
 }
