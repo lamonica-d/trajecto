@@ -6,10 +6,8 @@ author:
 - Hervé Pella^1^
 - Jérémy Piffady^1^
 - Anthony Maire^4^
-bibliography:
-- biblio.bib
+
 title: |
-  Propositions :\
   1. Fish behavioral response to spatiotemporal variations in river
   environmental conditions\
   2. Fish behavioral response to thermal and hydraulic
@@ -20,6 +18,10 @@ title: |
   in a large river\
   5. Classification of fish behavioral responses to environmental
   fluctuations in a large river
+  Propositions :\
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 1 - INRAE, RiverLy, HYNES (Irstea-EDF R&D), Villeurbanne, F-69625,
@@ -35,26 +37,25 @@ dominique.lamonica\@ird.fr\
 
 **Keywords:**
 
-Introduction
-============
+# Introduction
 
 Movement is a key feature of living organisms, affecting many ecological
-processes [@nathan2008a]. In the last decades, the development of
+processes. In the last decades, the development of
 individual marking and tracking methods and related analytical methods
-[@jonsen2013] have revolutionised behavioural ecology [@cagnacci2010],
-especially movement ecology [@nathan], which studies the link between
+ have revolutionised behavioural ecology ,
+especially movement ecology, which studies the link between
 the environment, organism internal states and their resulting movement.
 Most movements relate to the need for resources such as food or mates
-[@dingle2007]. Station keeping refer to small scale movements within the
+. Station keeping refer to small scale movements within the
 home range of individuals. It includes forging, i.e. a small scale and
 generally regular movement to find appropriate resource. It also
 included the defence of the habitat or predation avoidance and do not
 require complex orientation and navigation systems [@dingle2006]. On the
 other hand, ranging refers to larger scale exploratory movements outside
 the home range to find more suitable habitats, that stop when the
-appropriate resources are found [@jander1975]. Lastly, migration refer
+appropriate resources are found . Lastly, migration refer
 to an oriented compulsory movement outside the home range, occurring on
-a seasonal basis with a return movement [@dingle2007]. Analysing
+a seasonal basis with a return movement . Analysing
 individual movements can inform on their behaviours and on their
 habitats needs. More importantly, movements can be used to assess the
 perturbations due to anthropogenic modifications of habitats.
@@ -62,19 +63,19 @@ perturbations due to anthropogenic modifications of habitats.
 Rivers provide multiple ecosystem services, but are heavily anthropised
 and modified by the implementation of dams or weirs, by water
 intake/outake, regulation of discharges, modification of habitats \...
-[@postel2003]. At large temporal and spatial scales, Arevalo et al.
-[@arevalo2020a] show how global change have modified the thermal and
+. At large temporal and spatial scales, Arevalo et al.
+ show how global change have modified the thermal and
 discharge regimes of rivers, and how such modifications can in turn
-impact habitats suitability by fish [@arevalo2021a][@arevalo2021b]. At a
+impact habitats suitability by fish . At a
 smaller spatial scale, the modifications of water velocity or thermal
 regimes due to anthropogenic pressures also modify the spatial
 distribution of fishes permanently or temporarily
-[@lamouroux2006][@capra2017]. At both scales, both intraspecific and
+. At both scales, both intraspecific and
 interspecific variabilities are observed. High resolution trajectories
 data appears very relevant to improve our understanding of the responses
 of fishes to natural of human-induced variations in environmental
 conditions. Many dedicated methods and models have been developed to
-analysis such data [@joo2013][@jonsen2013][@nathan][@gurarie2016]. They
+analysis such data. They
 would allow quantifying the changes behaviours and habitat use and
 explore for the existence of patterns of responses.
 
@@ -82,15 +83,15 @@ Yet, contrary to lakes or marine ecosystems, there is only a few studies
 investigating the influence on local environment in river on fish
 through the analysis of their trajectories. Many of these analysis focus
 on fish migration to assess the impacts of dams and weirs
-[@arenas2015][@benjebria2021]. Indeed, specific difficulties of movement
+. Indeed, specific difficulties of movement
 data acquisition/defects of available data and data analysis are
 encountered in rivers. Most positioning systems use a triangulation
 procedure which is highly sensitive to regularities in banks profiles
-and ground irregularities [@cooke2013a]. As such, the precision is
-spatially very variable [@berge2012b]. Moreover, contrary to open
+and ground irregularities . As such, the precision is
+spatially very variable . Moreover, contrary to open
 systems, rivers are highly anisotropic with banks and flow direction
-constraining fish movements [@quaglietta2019]. Given all these
-specificities, Lamonica et al. [@lamonica2020] developed a specific
+constraining fish movements . Given all these
+specificities, Lamonica et al. developed a specific
 framework to preprocess fish trajectories data aiming to address these
 limitations and then, to facilitate the exploration of the impacts of
 environmental conditions on fish behaviours.
@@ -130,30 +131,26 @@ performed to classify individuals based on probability function shapes
 which describe their responses to a change in this environmental
 variable.\
 
-Materials and Methods
-=====================
+# Materials and Methods
 
-Study area
-----------
+## Study area
 
 The study river section is located on the Rhône river and is 1.8km long
 and 140m wide (at a mean discharge of 465m^3^.s^-1^). This river section
 is situated 363km upstream from the river mouth, near the Bugey nuclear
-power plant (45$^{\circ}$47'44"N; 5$^{\circ}$16'25"E). The power plant
-abstracts c.a. 100m ^3^.s^-1^ at the upstream end of our study reach to
-cool its four reactors, and releases warmed water (between 7$^{\circ}$C
-and 10$^{\circ}$C warmer than the upstream water) at two different
-locations , creating a temperature difference between the left and the
-right bank. More details on the study site can be found in Plichard2017.
+power plant
+(45\$^{^\circ}$47'44"N; 5${\circ}$16'25"E). The power plant abstracts c.a. 100m ^3^.s^-1^ at the upstream end of our study reach to cool its four reactors, and releases warmed water (between 7$^{^\circ}$C and 10${\circ}\$C
+warmer than the upstream water) at two different locations , creating a
+temperature difference between the left and the right bank. More details
+on the study site can be found in Plichard2017.
 
-Data collection and simulation
-------------------------------
+## Data collection and simulation
 
 ### Movement/trajectory data
 
 Bergé et al. collected telemetry data on 94 freshwater fish individuals
 of X species in the Rhône river using an HTI
-(https://www.innovasea.com/fish-tracking/) acoustic fixed telemetry
+(<https://www.innovasea.com/fish-tracking/>) acoustic fixed telemetry
 system with X hydrophones positioned on the riverbed [@Berge2012].
 Locations of these individuals have been tracked during three months at
 a period of three seconds. Each tag emits a specific acoustic signal/at
@@ -187,8 +184,7 @@ locations in order to compare the effect of the variables between
 individuals and between the variables themselves on fish
 movement/behaviour.
 
-State space model + parameter inference
----------------------------------------
+## State space model + parameter inference
 
 ### State-space modelling
 
@@ -197,9 +193,9 @@ discriminating the different individual behaviours displayed by an
 individual during its trajectories, and at describing how fishes switch
 between those behaviours as a response to environmental cues. Model
 states correspond to the succession of fish behaviours at each
-time-step, with two possible behaviours: \"Resting\" (denoted by $R$)
+time-step, with two possible behaviours: "Resting" (denoted by $R$)
 which corresponds to slow or erratic short-distance movements, and
-\"Moving\" (denoted by $M$) which corresponds to fast oriented movements
+"Moving" (denoted by $M$) which corresponds to fast oriented movements
 (Lamonica2020). We assumed a quadratic influence of each environmental
 variable on the behaviour switching probabilities between each
 time-step, with a logit link to map the quadratic linear function to
@@ -210,7 +206,7 @@ effect of the nychthemeral period (day, dust, dawn, night) to account
 for possible different levels of activity throughout the day. The
 observation model links the state at time $t$ to corresponding movement
 variables (*i.e.* speed between two locations and turning angles between
-two moves) [@Morales2004] and two additional variables which summarize
+two moves)  and two additional variables which summarize
 the raw data to help discriminating between behaviours Lamonica2020. The
 model is written as follows:\
 Transition matrix $$M_{q}(t)=
@@ -281,14 +277,13 @@ Bayesian inference was used to fit the model to the data independently
 for each individual. We defined prior distributions summarising all
 available information on each parameter (see SI Table xx). Markov Chain
 Monte Carlo (MCMC) computations were performed using JAGS software and
-the *rjags* R package [@Plummer2009; @R]. A total of 5,000 iterations
+the *rjags* R package. A total of 5,000 iterations
 were performed as a burn-in phase and inference was based on 20,000 to
 70,000 additional iterations, depending on the individual, for each of
 the three independent chains. We used the Gelman and Rubin tests
-[@Gelman1992] to check the convergence of the estimation process.
+to check the convergence of the estimation process.
 
-Clustering of fishes
---------------------
+## Clustering of fishes
 
 We aimed at classifying the response of individuals to environmental
 factors in terms of behavioral change, *i.e.* based on how the
@@ -313,7 +308,7 @@ clustering analysis, a metric is required to quantify the
 distance/similarity between each pair of functions. In this aim, we
 calculated for each pair of fucntions the absolute area between the two
 curves, restrained on the main part of the environmental gradient
-(x-axis range of standardised environmental variable = \[-1.5; 1.5\]),
+(x-axis range of standardised environmental variable = $$-1.5; 1.5$$),
 using area between curve function from the *geiger* R package (ref).\
 In order to take into account the uncertainties in estimates of the
 transition matrix coefficients, we performed the classification using
@@ -329,11 +324,9 @@ figure Ax). Each replicate of each individual fell into a class. To
 assign an individual to a class, we selected the one where most of the
 replicates fell into.
 
-Results
-=======
+# Results
 
-Nychthemeral period effect
---------------------------
+## Nychthemeral period effect
 
 For all individuals and for both switching behaviour probabilities, at
 least the coefficient of the fixed effect for one nychthemeral period
@@ -342,8 +335,7 @@ S2). However, the coefficients of nychthemeral period fixed effects
 showed no general pattern. We chose to focus the results on the
 switching probabilities computed for the day.
 
-General effect of the environment
----------------------------------
+## General effect of the environment
 
 Outside of the extreme range of environmental values, median switching
 probabilities were below 0.5 (SI Figure S4), suggesting that individuals
@@ -366,8 +358,7 @@ behaviour switch/change increases, in particular from resting to moving.
 However, for some individuals one or both switching probabilities showed
 very little variations according to the environmental factors.
 
-Inter- and intra-species variability
-------------------------------------
+## Inter- and intra-species variability
 
 For the probability to switch from moving to resting according to flow
 velocity, three groups were identified (Figure 3a): the individuals from
@@ -395,8 +386,7 @@ consistent across the couples probability-environmental factor,
 suggesting that there is no pattern in the global response to the
 environmental conditions.
 
-Discussion
-==========
+# Discussion
 
 -   what do those probability transitions mean ecologically, for the
     fish behaviour ?
@@ -409,8 +399,7 @@ Discussion
     limitations (river, telemetry, size of the section, loss of the
     signal, etc.)
 
-Conclusions
-===========
+# Conclusions
 
 -   summary of results/interpretations: minor effect of water
     temperature difference compared to flow velocity and water depth +
@@ -425,7 +414,4 @@ Conclusions
     knowing those behaviour modifications is helpful to assess how
     disturbed the individuals can be.
 
-Figures
-=======
-
-![](Figure2.pdf){#fig2}
+# Figures
