@@ -16,19 +16,10 @@ list(
             format = "file")
   
   # clean data of catfish N 3856 (script01)
-  , tar_target(prep3856, prepa1(here::here("data", "derived-data",
-                                         "3856")))
-  
-  #clean data of chub N 3183 (script01)
-  , tar_target(prep3183, prepa1(here::here("data", "derived-data",
-                                         "3183")))
-  
-  #clean data of barbel N 3100 (script01)
-  , tar_target(prep3100, prepa1(here::here("data", "derived-data",
-                                           "3100")))
+  , tar_target(clean_data, prepa1(input_data))
   
   # obtain individual data frames (script02)
-  , tar_target(data_for_inference, prepa2(prep3856, prep3183, prep3100)) 
+  , tar_target(data_for_inference, prepa2(clean_data)) 
   
   # model parameters (script03) should be calculated in an external cluster 
   # this step takes several days. Therefore, for the next step, input files
