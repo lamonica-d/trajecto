@@ -23,7 +23,7 @@ list(
                                         "image_inf_individual_3856_v10.Rdata")))
                
   # parameter classification (script05)
-  , tar_target(classif1, classif_computation(mtot))
+  , tar_target(classif1, classif_computation(mtot_list_v5))
   
   # classification decision (script06)
   , tar_target(classif2, hhfh(classif1))
