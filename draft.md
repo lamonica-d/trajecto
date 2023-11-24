@@ -8,17 +8,9 @@ author:
 - Anthony Maire^4^
 
 title: |
-  1. Fish behavioral response to spatiotemporal variations in river
-  environmental conditions\
-  2. Fish behavioral response to thermal and hydraulic
-  heterogeneity/variations within a large river section\
-  3. Fish behavioral response to environmental fluctuations in a large
-  river (section)\
-  4. Patterns of fish behavioral responses to environmental fluctuations
-  in a large river\
-  5. Classification of fish behavioral responses to environmental
+  Classification of fish behavioral responses to environmental
   fluctuations in a large river
-  Propositions :\
+  
 editor_options: 
   markdown: 
     wrap: 72
@@ -36,6 +28,11 @@ dominique.lamonica\@ird.fr\
 **Word count:** words
 
 **Keywords:**
+
+
+# Description
+
+This quarto file was produced to present the trajecto project. This file is supposed to be integrated in the target pipeline. 
 
 # Introduction
 
@@ -166,6 +163,18 @@ spaced in time (1 minute). We selected the individuals which have been
 located more than xx hours (number of locations), namely 4 individuals
 of barbel *Barbus barbus*, 8 individuals of European chub *Squalius
 cephalus* and 6 individuals of European catfish *Silurus glanis*.
+
+
+# Data acquisition
+
+```{r 'download-data'}
+## Download data (if required) ----
+
+
+```
+
+
+
 
 ### Environment data
 
