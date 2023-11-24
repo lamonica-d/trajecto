@@ -4,11 +4,20 @@ format: revealjs
 editor: visual
 ---
 
+```{r}
+#/ label: setup
+#/ message: false
+```
+
 ## Intro
 
 -   Données de Dominique sur l'étude du comportement (mouvement) des poissons par rapport aux paramètres environnementaux (hauteur, température, vitesse du courant)
 
 -   Scripts et analyses déjà réalisés
+
+## État de l'art
+
+![](figures/orga_au_debut.png)
 
 ## Notre objectif
 
@@ -22,8 +31,11 @@ editor: visual
 
 -   difficile de partir d'un projet terminé
 
+-   trois scripts très longs: pas évident à factoriser
+
 -   interruption de la chaine (utilisation d'un serveur distant (temps de calcul très long))
 
+<<<<<<< Updated upstream
 -   tar_visnetwork
 
 <!-- ```{r} -->
@@ -33,3 +45,10 @@ editor: visual
 <!-- ``` -->
 
 ![visualisation targets](figures/orga_au_debut.png)
+=======
+## Targets vizualisation
+
+```{r}
+suppressWarnings(targets::tar_visnetwork())
+```
+>>>>>>> Stashed changes

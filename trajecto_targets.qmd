@@ -357,11 +357,11 @@ replicates fell into.
 Show the data frame of clean data for each individuals
 
 ```{r}
-table1 <- tar_read(data_for_inference)
+#table1 <- tar_read(data_for_inference)
 ```
 
 ```{r}
-knitr::kable(head(table1,10),caption=paste("Clean data for inference"))
+#knitr::kable(head(table1,10),caption=paste("Clean data for inference"))
 ```
 
 
@@ -464,3 +464,16 @@ tar_load(plot)
     disturbed the individuals can be.
 
 # Figures
+
+![Figure 2](figures/figure2.pdf)
+
+![Figure 3a](figures/figure3a.pdf)
+
+![Figure 3b](figures/figure3b.pdf)
+
+![Figure 3c](figures/figure3c.pdf)
+
+![Figure 3d](figures/figure3d.pdf)
+
+
+
