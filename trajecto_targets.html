@@ -162,16 +162,20 @@ We developed a movement state-space model describing the effect of flow velocity
 <h3 class="anchored" data-anchor-id="movementtrajectory-data">Movement/trajectory data</h3>
 <p>Bergé et al.&nbsp;collected telemetry data on 94 freshwater fish individuals of X species in the Rhône river using an HTI (<a href="https://www.innovasea.com/fish-tracking/" class="uri">https://www.innovasea.com/fish-tracking/</a>) acoustic fixed telemetry system with X hydrophones positioned on the riverbed <span class="citation" data-cites="Berge2012">[@Berge2012]</span>. Locations of these individuals have been tracked during three months at a period of three seconds. Each tag emits a specific acoustic signal/at a specific frequency that allows the identification of fish individual and precise positioning through a triangulation process, provided that the signal is detected by at least 3 hydrophones. Those data have been pre-treated according to the method presented in Lamonica2020 to handle usual defects of telemetry data (small and large gaps in location recording, and specific artefactual patterns in some trajectories due to the triangulation process of the HTI system). For each individual, we obtained a set of independent trajectories with locations regularly spaced in time (1 minute). We selected the individuals which have been located more than xx hours (number of locations), namely 4 individuals of barbel <em>Barbus barbus</em>, 8 individuals of European chub <em>Squalius cephalus</em> and 6 individuals of European catfish <em>Silurus glanis</em>.</p>
 </section>
-</section>
-</section>
-<section id="data-acquisition" class="level1">
-<h1>Data acquisition</h1>
+<section id="data-acquisition" class="level3">
+<h3 class="anchored" data-anchor-id="data-acquisition">Data acquisition</h3>
+<p>Show the data frame of clean data for each individuals</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Download data (if required) ----</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(data_for_inference)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✖ Identified no targets to load.</code></pre>
 </div>
+</div>
+</section>
 <section id="environment-data" class="level3">
 <h3 class="anchored" data-anchor-id="environment-data">Environment data</h3>
 <p>A two-dimensional unsteady hydraulic model of the reach considering the longitudinal and lateral variations of depth-averaged velocities and accounting for discharge variations have been used to simulate fish local environment (Telemac 2D model, calibration details in Capra et al., 2011). The Telemac 2D model also had a component that allowed us to simulate water temperature conditions across the reach (Hervouet, 1999) . For each time and location of each individual, depth-averaged velocity (<span class="math inline">\(V\)</span>, m.s<sup>-1</sup>), water depth (<span class="math inline">\(D\)</span>, m) and the difference between the local water temperature and the water temperature recorded upstream of the study section (<span class="math inline">\(T\)</span>, <span class="math inline">\(^{\circ}\)</span>C) have been simulated. Then those three variables have been normalised across all individuals and locations in order to compare the effect of the variables between individuals and between the variables themselves on fish movement/behaviour.</p>
+</section>
 </section>
 <section id="state-space-model-parameter-inference" class="level2">
 <h2 class="anchored" data-anchor-id="state-space-model-parameter-inference">State space model + parameter inference</h2>
