@@ -1,5 +1,5 @@
 ---
-title: "Trqjecto project"
+title: "Trajecto project"
 format: revealjs
 editor: visual
 ---
@@ -24,7 +24,12 @@ editor: visual
 
 -   interruption de la chaine (utilisation d'un serveur distant (temps de calcul très long))
 
-```{r}
-targets::tar_visnetwork()
-```
-[visualisation targets](figures/orga_au_debut.png)
+-   tar_visnetwork
+
+<!-- ```{r} -->
+
+<!-- targets::tar_visnetwork() -->
+
+<!-- ``` -->
+
+![visualisation targets](figures/orga_au_debut.png)
