@@ -36,5 +36,5 @@ for (j in 1:length(numpoiss_vect0)){
    plot(jags_res, trace=T, density=F)
   mtot_list[[j]]=rbind(jags_res[[1]],jags_res[[2]],jags_res[[3]])
 }
-save(mtot_list, file="mtot_list_v5")
+save(mtot_list, file="mtot_list")
 }

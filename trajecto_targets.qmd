@@ -1,4 +1,9 @@
 ---
+# format:
+#   pdf: default
+#   arxiv-pdf:
+#     keep-tex: true
+
 author:
 - 'Dominique Lamonica^1,2^'
 - Hilaire Drouineau^3^

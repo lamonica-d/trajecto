@@ -1,0 +1,670 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Classification of fish behavioral responses to environmental fluctuations in a large river},
+  pdfauthor={Dominique Lamonica1,2; Hilaire Drouineau3; Hervé Capra1; Hervé Pella1; Jérémy Piffady1; Anthony Maire4},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Classification of fish behavioral responses to environmental
+fluctuations in a large river}
+\author{Dominique Lamonica\textsuperscript{1,2} \and Hilaire
+Drouineau\textsuperscript{3} \and Hervé
+Capra\textsuperscript{1} \and Hervé Pella\textsuperscript{1} \and Jérémy
+Piffady\textsuperscript{1} \and Anthony Maire\textsuperscript{4}}
+\date{}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, interior hidden, boxrule=0pt, frame hidden, enhanced, breakable, sharp corners]}{\end{tcolorbox}}\fi
+
+1 - INRAE, RiverLy, HYNES (Irstea-EDF R\&D), Villeurbanne, F-69625,
+France\\
+2 - IRD\\
+3 - INRAE, EABX, HYNES (Irstea-EDF R\&D), Cestas, F-33612, France\\
+4 - EDF R\&D, LNHE (Laboratoire National d'Hydraulique et
+Environnement), HYNES (Irstea - EDF R\&D), 6 quai Watier, 78401 Chatou
+Cedex, France\\
+\textbf{Corresponding author:} Dominique Lamonica, address: , email:
+dominique.lamonica@ird.fr\\
+\textbf{Running title:}\\
+\textbf{Word count:} words
+
+\textbf{Keywords:}
+
+\hypertarget{description}{%
+\section{Description}\label{description}}
+
+This quarto file was produced to present the trajecto project. This file
+is supposed to be integrated in the target pipeline.
+
+\hypertarget{packages}{%
+\subsection{Packages}\label{packages}}
+
+These are the packages I used for my file \textbf{test\_targets.R} file.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# library(targets)}
+\CommentTok{\# library(tarchetypes)}
+\CommentTok{\# library(ggplot2)}
+\CommentTok{\# library(visNetwork)}
+\end{Highlighting}
+\end{Shaded}
+
+These are the packages I might use this file \emph{.qmd}.
+
+\hypertarget{setup}{%
+\subsection{Setup}\label{setup}}
+
+These are the parameters to apply to this whole document
+(\textbf{report\_targets.qmd}).
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Movement is a key feature of living organisms, affecting many ecological
+processes. In the last decades, the development of individual marking
+and tracking methods and related analytical methods have revolutionised
+behavioural ecology , especially movement ecology, which studies the
+link between the environment, organism internal states and their
+resulting movement. Most movements relate to the need for resources such
+as food or mates . Station keeping refer to small scale movements within
+the home range of individuals. It includes forging, i.e.~a small scale
+and generally regular movement to find appropriate resource. It also
+included the defence of the habitat or predation avoidance and do not
+require complex orientation and navigation systems {[}@dingle2006{]}. On
+the other hand, ranging refers to larger scale exploratory movements
+outside the home range to find more suitable habitats, that stop when
+the appropriate resources are found . Lastly, migration refer to an
+oriented compulsory movement outside the home range, occurring on a
+seasonal basis with a return movement . Analysing individual movements
+can inform on their behaviours and on their habitats needs. More
+importantly, movements can be used to assess the perturbations due to
+anthropogenic modifications of habitats.
+
+Rivers provide multiple ecosystem services, but are heavily anthropised
+and modified by the implementation of dams or weirs, by water
+intake/outake, regulation of discharges, modification of habitats ... .
+At large temporal and spatial scales, Arevalo et al. show how global
+change have modified the thermal and discharge regimes of rivers, and
+how such modifications can in turn impact habitats suitability by fish .
+At a smaller spatial scale, the modifications of water velocity or
+thermal regimes due to anthropogenic pressures also modify the spatial
+distribution of fishes permanently or temporarily . At both scales, both
+intraspecific and interspecific variabilities are observed. High
+resolution trajectories data appears very relevant to improve our
+understanding of the responses of fishes to natural of human-induced
+variations in environmental conditions. Many dedicated methods and
+models have been developed to analysis such data. They would allow
+quantifying the changes behaviours and habitat use and explore for the
+existence of patterns of responses.
+
+Yet, contrary to lakes or marine ecosystems, there is only a few studies
+investigating the influence on local environment in river on fish
+through the analysis of their trajectories. Many of these analysis focus
+on fish migration to assess the impacts of dams and weirs . Indeed,
+specific difficulties of movement data acquisition/defects of available
+data and data analysis are encountered in rivers. Most positioning
+systems use a triangulation procedure which is highly sensitive to
+regularities in banks profiles and ground irregularities . As such, the
+precision is spatially very variable . Moreover, contrary to open
+systems, rivers are highly anisotropic with banks and flow direction
+constraining fish movements . Given all these specificities, Lamonica et
+al.~developed a specific framework to preprocess fish trajectories data
+aiming to address these limitations and then, to facilitate the
+exploration of the impacts of environmental conditions on fish
+behaviours.
+
+Behavioural ecology has shown intraspecies variability in habitat
+preference and use (refs). This compels several processes of the
+population dynamics (dev un peu). Similarly, variations in species
+response to environmental changes can impact the community diversity,
+distribution and abundance (refs?). To investigate individual behaviour
+response to local environment variations, movement data appear to be an
+appropriate window. Several statistical and modelling tools are
+available to analyse and link movement data to individual behaviour
+(Gurarie2016). In particular, state-space models are widely used, and
+they offer the possibility of integrating environmental influence on
+switching probabilities between behavioural states (dev examples/refs).
+
+In this paper, we propose to assess: 1) the effect of local
+environmental factors on behaviour change of individuals among
+freshwater fish species, and 2) the inter- and intraspecies variability
+of the response to environmental variations. We chose three freshwater
+species (chubs, barbel and catfish) and we focused on three major
+environmental factors, namely water depth, flow velocity and water
+temperature (why those factors + ref plichard2017). Our hypotheses are
+the following:.\\
+We developed a movement state-space model describing the effect of flow
+velocity, water depth and water temperature on behavioural change
+probabilities to investigate the variations in the effect of local
+environment on individual habitat use of freshwater fish (Figure 1).
+Movement data was derived from observed telemetry data, \emph{i.e.}
+location and time, and local environment input data was simulated using
+a 2D hydraulic model. For each individual, independently model
+parameters were inferred within a Bayesian framework. Behavioural change
+probability functions were computed with the posterior distributions of
+parameters describing the effect of environment on behavioural change.
+For each environmental variable, independent classifications were then
+performed to classify individuals based on probability function shapes
+which describe their responses to a change in this environmental
+variable.\\
+
+\hypertarget{materials-and-methods}{%
+\section{Materials and Methods}\label{materials-and-methods}}
+
+\hypertarget{study-area}{%
+\subsection{Study area}\label{study-area}}
+
+The study river section is located on the Rhône river and is 1.8km long
+and 140m wide (at a mean discharge of 465m\textsuperscript{3}
+s\textsuperscript{-1}). This river section is situated 363km upstream
+from the river mouth, near the Bugey nuclear power plant 45°47'44''N;
+5°16'25''E. The power plant abstracts c.a. 100m\textsuperscript{3}
+s\textsuperscript{-1} at the upstream end of our study reach to cool its
+four reactors, and releases warmed water (between 7°C and 10°C warmer
+than the upstream water) at two different locations , creating a
+temperature difference between the left and the right bank. More details
+on the study site can be found in Plichard2017.
+
+\hypertarget{data-collection-and-simulation}{%
+\subsection{Data collection and
+simulation}\label{data-collection-and-simulation}}
+
+\hypertarget{movementtrajectory-data}{%
+\subsubsection{Movement/trajectory data}\label{movementtrajectory-data}}
+
+Bergé et al.~collected telemetry data on 94 freshwater fish individuals
+of X species in the Rhône river using an HTI
+(\url{https://www.innovasea.com/fish-tracking/}) acoustic fixed
+telemetry system with X hydrophones positioned on the riverbed
+{[}@Berge2012{]}. Locations of these individuals have been tracked
+during three months at a period of three seconds. Each tag emits a
+specific acoustic signal/at a specific frequency that allows the
+identification of fish individual and precise positioning through a
+triangulation process, provided that the signal is detected by at least
+3 hydrophones. Those data have been pre-treated according to the method
+presented in Lamonica2020 to handle usual defects of telemetry data
+(small and large gaps in location recording, and specific artefactual
+patterns in some trajectories due to the triangulation process of the
+HTI system). For each individual, we obtained a set of independent
+trajectories with locations regularly spaced in time (1 minute). We
+selected the individuals which have been located more than xx hours
+(number of locations), namely 4 individuals of barbel \emph{Barbus
+barbus}, 8 individuals of European chub \emph{Squalius cephalus} and 6
+individuals of European catfish \emph{Silurus glanis}.
+
+\hypertarget{data-acquisition}{%
+\subsubsection{Data acquisition}\label{data-acquisition}}
+
+Show the data frame of clean data for each individuals
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tar\_load}\NormalTok{(data\_for\_inference)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+✖ Identified no targets to load.
+\end{verbatim}
+
+\hypertarget{environment-data}{%
+\subsubsection{Environment data}\label{environment-data}}
+
+A two-dimensional unsteady hydraulic model of the reach considering the
+longitudinal and lateral variations of depth-averaged velocities and
+accounting for discharge variations have been used to simulate fish
+local environment (Telemac 2D model, calibration details in Capra et
+al., 2011). The Telemac 2D model also had a component that allowed us to
+simulate water temperature conditions across the reach (Hervouet, 1999)
+. For each time and location of each individual, depth-averaged velocity
+(\(V\), m.s\textsuperscript{-1}), water depth (\(D\), m) and the
+difference between the local water temperature and the water temperature
+recorded upstream of the study section (\(T\), \(^{\circ}\)C) have been
+simulated. Then those three variables have been normalised across all
+individuals and locations in order to compare the effect of the
+variables between individuals and between the variables themselves on
+fish movement/behaviour.
+
+\hypertarget{state-space-model-parameter-inference}{%
+\subsection{State space model + parameter
+inference}\label{state-space-model-parameter-inference}}
+
+\hypertarget{state-space-modelling}{%
+\subsubsection{State-space modelling}\label{state-space-modelling}}
+
+We developed a state-space model based on Lamonica2020 aiming at
+discriminating the different individual behaviours displayed by an
+individual during its trajectories, and at describing how fishes switch
+between those behaviours as a response to environmental cues. Model
+states correspond to the succession of fish behaviours at each
+time-step, with two possible behaviours: ``Resting'' (denoted by \(R\))
+which corresponds to slow or erratic short-distance movements, and
+``Moving'' (denoted by \(M\)) which corresponds to fast oriented
+movements (Lamonica2020). We assumed a quadratic influence of each
+environmental variable on the behaviour switching probabilities between
+each time-step, with a logit link to map the quadratic linear function
+to switching probabilities . The quadratic function allows for
+non-linear relationships, especially dome-shape relationships, between
+environmental factors and behaviour changes. We also added a fixed
+effect of the nychthemeral period (day, dust, dawn, night) to account
+for possible different levels of activity throughout the day. The
+observation model links the state at time \(t\) to corresponding
+movement variables (\emph{i.e.} speed between two locations and turning
+angles between two moves) and two additional variables which summarize
+the raw data to help discriminating between behaviours Lamonica2020. The
+model is written as follows:\\
+Transition matrix \[M_{q}(t)=
+\begin{pmatrix}
+   1-q_{R \rightarrow M}(t) &q_{R \rightarrow M}(t) \\
+   q_{M \rightarrow R}(t)&1-q_{M \rightarrow R}(t) 
+\end{pmatrix}\]
+
+\[\text{logit}(q_{R \rightarrow M}(t)) = M_{a} \times M_{E}(t)\]
+
+\[\text{logit}(q_{M \rightarrow R}(t)) = M_{b} \times M_{E}(t)\]
+
+with \[M_{a}=(a_{1}, ..., a_{11})\]
+
+\[M_{b}=(b_{1}, ..., b_{11})\] and
+
+\[M_{E}(t)=
+\begin{pmatrix}
+   0 \\
+   V(t) \\
+   V^2(t) \\
+   D(t) \\
+   D^2(t) \\
+   T(t) \\
+   T^2(t) \\
+   \mathbb{1}_{DAY}(t) \\
+   \mathbb{1}_{DUST}(t) \\
+   \mathbb{1}_{NIGHT}(t) \\
+   \mathbb{1}_{DAWN}(t)
+\end{pmatrix}\]
+
+State equation \[z_{t} \sim \mathcal{B}ernoulli(M_{q}(t)[z_{t-1}])\]
+Observation model
+
+\[\begin{array}{l}
+y_{v_{t}} \sim \mathcal{G}amma(k[z_{t}], \theta[z_{t}])\\
+y_{\phi_{t}} \sim \mathcal{V}on\mathcal{M}ises(m[z_{t}], \rho[z_{t}])\\
+U_{1_{t}} \sim \mathcal{B}eta(\alpha[z_{t}], \beta[z_{t}])\\
+U_{2_{t}} \sim \mathcal{N}ormal(\mu[z_{t}], \sigma[z_{t}])
+\end{array}\]
+
+with \(q_{R \rightarrow M}\) and \(q_{M \rightarrow R}\) the probability
+of switching from resting, respectively moving, behaviour to moving,
+respectively resting, behaviour, \(z_{t}\) the behaviour at time \(t\)
+(\(R\) or \(M\)). Parameters \(a_{1}\) and \(b_{1}\) are the intercepts
+of the switching probabilities, \(a_{2}\) and \(b_{2}\), and \(a_{5}\)
+and \(b_{5}\) are the linear and quadratic coefficients related to flow
+velocity, \(a_{3}\) and \(b_{3}\), and \(a_{6}\) and \(b_{6}\) are the
+linear and quadratic coefficients related to water depth, \(a_{4}\) and
+\(b_{4}\), and \(a_{7}\) and \(b_{7}\) are the linear and quadratic
+coefficients related to temperature difference.\\
+Concerning the data, \(y_{v_{t}}\) is the observed speed between \(t-1\)
+and \(t\) and \(y_{\phi_{t}}\) is the observed turning angles between
+\(t-2\) and \(t-1\) and \(t-1\) and \(t\), \(U_{1_{t}}\) is the ratio
+between the covered distance from interpolated data and the covered
+distance from raw data between \(t-1\) and \(t\), and \(U_{2_{t}}\) is
+the variance of turning angles from raw data between \(t-1\) and \(t\).
+Concerning parameters, \(k[z_{t}]\) and \(\theta[z_{t}]\) are the
+parameters describing the speed for behaviour \(z\) at time \(t\) and
+\(m[z_{t}]\) and \(\rho[z_{t}]\) are the parameters describing the
+turning angle for behaviour \(z\) at time \(t\), with \(\alpha[z_{t}]\)
+and \(\beta[z_{t}]\) the parameters describing \(U_{1}\) for behaviour
+\(z\) at time \(t\), \(\mu[z_{t}]\) and \(\sigma[z_{t}]\) the parameters
+describing \(U_{2}\) for behaviour \(z\) at time \(t\).
+
+\hypertarget{parameter-inference}{%
+\subsubsection{Parameter inference}\label{parameter-inference}}
+
+Bayesian inference was used to fit the model to the data independently
+for each individual. We defined prior distributions summarising all
+available information on each parameter (see SI Table xx). Markov Chain
+Monte Carlo (MCMC) computations were performed using JAGS software and
+the \emph{rjags} R package. A total of 5,000 iterations were performed
+as a burn-in phase and inference was based on 20,000 to 70,000
+additional iterations, depending on the individual, for each of the
+three independent chains. We used the Gelman and Rubin tests to check
+the convergence of the estimation process.
+
+\hypertarget{clustering-of-fishes}{%
+\subsection{Clustering of fishes}\label{clustering-of-fishes}}
+
+We aimed at classifying the response of individuals to environmental
+factors in terms of behavioral change, \emph{i.e.} based on how the
+probability of behaviour change varies along the environmental gradient.
+For that we used the derivative of the probability functions according
+to the target environmental variable, with the two other variables fixed
+to zero (\emph{i.e.} at their average value). The general form of the
+derivative function for the environmental variable \(X\) is thus written
+as follow:
+\[\frac{(c + 2\times d\times X)\exp(a + b + c\times X + d\times X^2)}{\exp(a + b + c\times X + d\times X^2) + 1} -
+\frac{(c + 2\times d\times X)\exp(2\times (a + b) + 2\times c\times X + 2\times d\times X^2)}{(\exp(a + b + c\times X + d\times X^2) + 1)^2}\]
+with \(a\) the intercept of the considered switching probability (from
+Resting to Moving \(q_{R \rightarrow M}\), or Moving to Resting
+\(q_{M \rightarrow R}\)), \(b\) the coefficient of the nychthemeral
+period fixed effect, \(c\) and \(d\) being the linear and quadratic
+coefficients respectively, relative to the considered environmental
+variable \(X\) (flow velocity \(V\), water depth \(D\), or water
+temperature difference \(T\)).\\
+Six independent classifications were performed, \emph{i.e.} two
+behaviour changing probabilities X three environmental variables. To
+carry out a clustering analysis, a metric is required to quantify the
+distance/similarity between each pair of functions. In this aim, we
+calculated for each pair of fucntions the absolute area between the two
+curves, restrained on the main part of the environmental gradient
+(x-axis range of standardised environmental variable = \[-1.5; 1.5\]),
+using area between curve function from the \emph{geiger} R package
+(ref).\\
+In order to take into account the uncertainties in estimates of the
+transition matrix coefficients, we performed the classification using
+\(n\) replicates for each individual. Those replicates were generated by
+randomly selecting \(n\) iterations of the posterior distributions,
+leading to \(n\) values of the transition matrix coefficients which have
+been used to compute \(n\) derivative functions per individual,
+according to equation (6).\\
+For each of the 6 independent classifications, we performed hierarchical
+clustering using whatever function from whatever R package (ref). We set
+the number of classes according to inertia decrease (ref?) (see SI
+figure Ax). Each replicate of each individual fell into a class. To
+assign an individual to a class, we selected the one where most of the
+replicates fell into.
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\hypertarget{nychthemeral-period-effect}{%
+\subsection{Nychthemeral period
+effect}\label{nychthemeral-period-effect}}
+
+For all individuals and for both switching behaviour probabilities, at
+least the coefficient of the fixed effect for one nychthemeral period
+was significantly different from the others (ANOVA SI Table 2, Figure
+S2). However, the coefficients of nychthemeral period fixed effects
+showed no general pattern. We chose to focus the results on the
+switching probabilities computed for the day.
+
+\hypertarget{general-effect-of-the-environment}{%
+\subsection{General effect of the
+environment}\label{general-effect-of-the-environment}}
+
+Outside of the extreme range of environmental values, median switching
+probabilities were below 0.5 (SI Figure S4), suggesting that individuals
+tend to stay in the same behaviour. Overall, the effect of the water
+temperature difference on switching probabilities was weaker than the
+effect of water depth and flow velocity, as suggested by the boxplots of
+the linear and quadratic coefficients being closer to zero for
+temperature difference (SI Figure S3). Hence, the median switching
+probabilities were less variable, almost constant, with temperature
+difference for all individuals (SI Figure S4). Consequently, we
+performed the classification on switching probabilities functions only
+for water depth and flow velocity. For those two environmental factors,
+there was no general pattern: probability functions were found to be
+monotonously increasing or decreasing, or bell shaped concave or convex
+(SI Figure S4). Simulated responses to water depth and flow velocity
+(with temperature difference equal to 0) for the value ranges
+encountered by each individual are showed Figure 2. Overall, in the
+extreme values of the environmental gradient, the probability of
+behaviour switch/change increases, in particular from resting to moving.
+However, for some individuals one or both switching probabilities showed
+very little variations according to the environmental factors.
+
+\hypertarget{inter--and-intra-species-variability}{%
+\subsection{Inter- and intra-species
+variability}\label{inter--and-intra-species-variability}}
+
+For the probability to switch from moving to resting according to flow
+velocity, three groups were identified (Figure 3a): the individuals from
+group one (red) showed an increasing then slightly decreasing
+probability, the individuals from the second group (green) showed the
+inverse pattern, while for the third group (blue) the probability showed
+little variations. For the probability to switch from resting to moving
+according to flow velocity, four groups were identified (Figure 3b): the
+individuals from group one (red) showed a concave parabolic probability,
+the third group (blue) showed the inverse pattern, the individuals from
+the second group (green) showed a decreasing probability. For the
+probability to switch from moving to resting according to water depth,
+two groups were identified (Figure 3c): the individuals from group one
+(red) showed a concave parabolic probability, the individuals from the
+second group (blue) showed a convex parabolic probability or less
+variations. For the probability to switch from resting to moving
+according to water depth, three groups were identified (Figure 3d): the
+individuals from group one (red) showed a concave parabolic probability,
+the third group (blue) showed the inverse pattern, while for the second
+group (blue) the probability was overall steadily increasing.\\
+Overall, classification of switching probability functions according to
+water depth or flow velocity did not allow to identify any species- or
+size- specific patterns (Figure 3). In addition, the groups were not
+consistent across the couples probability-environmental factor,
+suggesting that there is no pattern in the global response to the
+environmental conditions.
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+\begin{itemize}
+\item
+  what do those probability transitions mean ecologically, for the fish
+  behaviour ?
+\item
+  how can we interpret the effect of environment according to habitat
+  preferences and what we know about those species ecology ?
+\item
+  such an individual variability that we can not see any species/size
+  patterns, given the limitations of the experiment. develop on exp
+  limitations (river, telemetry, size of the section, loss of the
+  signal, etc.)
+\end{itemize}
+
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
+
+\begin{itemize}
+\item
+  summary of results/interpretations: minor effect of water temperature
+  difference compared to flow velocity and water depth + no general
+  pattern in the local environment effect, strong inter individual
+  variability + no group pattern + it seems that individual preferences,
+  or/and other local environmental factors, are the major driver of
+  behaviour changes.
+\item
+  perspectives: the model can help inferring/predicting in which
+  behavioral state is/will be an individual, as well as changes in
+  behaviour. In an environment with such a high anthropic pressure,
+  knowing those behaviour modifications is helpful to assess how
+  disturbed the individuals can be.
+\end{itemize}
+
+\hypertarget{figures}{%
+\section{Figures}\label{figures}}
+
+
+
+\end{document}
