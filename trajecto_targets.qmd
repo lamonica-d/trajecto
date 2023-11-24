@@ -189,16 +189,6 @@ of barbel *Barbus barbus*, 8 individuals of European chub *Squalius
 cephalus* and 6 individuals of European catfish *Silurus glanis*.
 
 
-### Data acquisition
-
-Show the data frame of clean data for each individuals
-```{r}
-tar_load(data_for_inference)
-```
-
-
-
-
 ### Environment data
 
 A two-dimensional unsteady hydraulic model of the reach considering the
@@ -356,6 +346,20 @@ figure Ax). Each replicate of each individual fell into a class. To
 assign an individual to a class, we selected the one where most of the
 replicates fell into.
 
+
+### Data analyses
+
+Show the data frame of clean data for each individuals
+
+```{r}
+table1 <- tar_read(data_for_inference)
+```
+
+```{r}
+knitr::kable(head(table1,10),caption=paste("Clean data for inference"))
+```
+
+
 # Results
 
 ## Nychthemeral period effect
@@ -417,6 +421,14 @@ size- specific patterns (Figure 3). In addition, the groups were not
 consistent across the couples probability-environmental factor,
 suggesting that there is no pattern in the global response to the
 environmental conditions.
+
+## Data analyses 
+
+Plot 
+```{r}
+tar_load(plot)
+```
+
 
 # Discussion
 

@@ -6,17 +6,25 @@ editor: visual
 
 ## Intro
 
-## Bullets
+-   Données de Dominique sur l'étude du comportement (mouvement) des poissons par rapport aux paramètres environnementaux (hauteur, température, vitesse du courant)
 
-When you click the **Render** button a document will be generated that includes:
+-   Scripts et analyses déjà réalisés
 
--   Content authored with markdown
--   Output from executable code
+## Notre objectif
 
-## Code
+-   Scinder les scripts en plusieurs scripts contenant des fonctions
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+-   Intégrer le projet dans la pipeline targets
+
+-   Genérer via la pipeline un rapport Quarto
+
+## Difficultés rencontrées
+
+-   difficile de partir d'un projet terminé
+
+-   interruption de la chaine (utilisation d'un serveur distant (temps de calcul très long))
 
 ```{r}
-1 + 1
+targets::tar_visnetwork()
 ```
+[visualisation targets](figures/orga_au_debut.png)
