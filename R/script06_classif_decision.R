@@ -131,6 +131,8 @@ for (j in 1:6){
   print(table)
 }
 
+
+
 save(tables_list, "outputs/tables_list")
 save(gp_list_list, "outputs/gp_list_list")
 save(nb_gp_list, "outputs/nb_gp_list")

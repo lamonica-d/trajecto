@@ -13,7 +13,7 @@ prepa1 <- function () {
 numpoiss_vect=c(3100,3183,3856)
                   
 
-data_comp=read.table(file=paste( numpoiss_vect[1], sep=""), header=T, sep=",")[1,]
+data_comp=read.table(file=paste("raw-data/", numpoiss_vect[1], sep=""), header=T, sep=",")[1,]
 data_comp$numpoiss=1
 
 for (i in 1:length(numpoiss_vect)){

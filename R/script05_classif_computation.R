@@ -26,11 +26,6 @@ library(geiger)
 
 f_derivee <- function(a,b,c,x, mu, sd){ ((b*sd + 2*c*(x-mu))*exp(a + ((x-mu)*(b*sd + c*(x-mu)))/sd^2))/(sd^2*(exp(a+((x-mu)*(b*sd-c*mu+c*x))/sd^2)+1)^2)}
 
-
-# ((b + 2 *c *(x - mu/sd)) *exp(a + b *(x - mu/sd) + c *(x - mu/sd)^2))/(exp(a + b *(x - mu/sd) + c *(x - mu/sd)^2) + 1) 
-# - ((b + 2 *c *(x - mu/sd)) *exp(2 *a + 2 *b *(x - mu/sd) + 2 *c *(x - mu/sd)^2))/(exp(a + b *(x - mu/sd) + c *(x - mu/sd)^2) + 1)^2}
-
-
 replicats=200
 df_rf_a1=matrix(0,ncol=16,nrow=1)
 for (i in 1:length(numpoiss_vect0)){  

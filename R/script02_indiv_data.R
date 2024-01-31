@@ -61,7 +61,7 @@ prepa2<-function(){
   data_ind=data8_sup2[data8_sup2$numpoiss==num_ind,]
   rm(data8_sup2)
   
-  ##################pb NA qui trainent#######################
+  ##################interpolating NAs in #######################
   #sil
   if (numpoiss_vect[num_ind]==3786){data_ind$temp[1315]=data_ind$temp[1314]
   data_ind$temp_carre[1315]=data_ind$temp_carre[1314]}
