@@ -1,0 +1,165 @@
+model {
+
+
+ for (s in 1:nbsection){
+
+ #pour le premier temps de la section
+    #vitesse
+    vit[debut[s]] ~ dgamma(k[z[debut[s]]],1/inv_lambda[z[debut[s]]])
+
+    var_angles_bruts[debut[s]]~ dnorm(mu[z[debut[s]]],tau[z[debut[s]]])T(0,)
+    rapport_dist[debut[s]]~ dbeta(alpha[z[debut[s]]], beta[z[debut[s]]])
+
+    #pas de rangle
+     
+      #etat
+      z[debut[s]] ~ dcat(T[debut[s],zinit[s],])
+      zinit[s] ~ dcat(qinit)
+
+      ###matrice de transition
+         
+      T[debut[s],1,1] <- 1- T[debut[s],1,2]
+      logit(T[debut[s],1,2]) <- inprod( enviro[debut[s],1:11],a[1,1:11])
+
+      T[debut[s],2,2] <- 1- T[debut[s],2,1]
+      logit(T[debut[s],2,1]) <- inprod(enviro[debut[s],1:11],a[2,1:11])
+	
+      enviro[debut[s],5] <- hmod_moy[debut[s]]*hmod_moy[debut[s]]
+      enviro[debut[s],6] <- vitc_moy[debut[s]]*vitc_moy[debut[s]]
+      enviro[debut[s],7] <- temp_moy[debut[s]]*temp_moy[debut[s]]
+
+      enviro[debut[s],1] <- 1
+      enviro[debut[s],2] <-hmod_moy[debut[s]]
+      enviro[debut[s],3] <-vitc_moy[debut[s]]
+      enviro[debut[s],4] <-temp_moy[debut[s]]
+
+      enviro[debut[s],8] <- aube[debut[s]]
+      enviro[debut[s],9] <- crep[debut[s]]
+      enviro[debut[s],10] <- jour[debut[s]]
+      enviro[debut[s],11] <- nuit[debut[s]]
+     
+
+   #pour le reste de la section
+    for (t in (debut[s]+1):(fin[s]-1)){
+
+   #vitesse
+      vit[t] ~ dgamma(k[z[t]],1/inv_lambda[z[t]])
+      #angle relatif
+      rangle[t] ~ dvonmises(phi[z[t]], rho[z[t]])
+      var_angles_bruts[t] ~ dnorm(mu[z[t]],tau[z[t]])T(0,)
+      rapport_dist[t]~ dbeta(alpha[z[t]], beta[z[t]])
+	
+      #etat
+      z[t] ~ dcat(T[t,z[t-1],1:2])
+
+          ###matrice de transition
+      T[t,1,1] <- 1- T[t,1,2]
+      logit(T[t,1,2]) <- inprod( enviro[t,1:11],a[1,1:11])
+
+      T[t,2,2] <- 1- T[t,2,1]
+      logit(T[t,2,1]) <- inprod(enviro[t,1:11],a[2,1:11])
+	
+      enviro[t,5] <- hmod_moy[t]*hmod_moy[t]
+      enviro[t,6] <- vitc_moy[t]*vitc_moy[t]
+      enviro[t,7] <- temp_moy[t]*temp_moy[t]
+
+      enviro[t,1] <- 1
+      enviro[t,2] <-hmod_moy[t]
+      enviro[t,3] <-vitc_moy[t]
+      enviro[t,4] <-temp_moy[t]
+
+      enviro[t,8] <- aube[t]
+      enviro[t,9] <- crep[t]
+      enviro[t,10] <- jour[t]
+      enviro[t,11] <- nuit[t]
+   
+     
+   }#temps
+
+ }#section
+
+
+
+######################################
+### parametres pour chaque poisson ###
+######################################
+
+
+#coeff proba de transition
+a[1,1] ~ dnorm(0,1/(1*1))
+a[2,1] ~ dnorm(0,1/(1*1))
+
+
+a[1,2] ~ dnorm(0,1/(1*1))
+a[2,2] ~ dnorm(0,1/(1*1))
+
+
+a[1,3] ~ dnorm(0,1/(1*1))
+a[2,3] ~ dnorm(0,1/(1*1))
+
+
+a[1,4] ~ dnorm(0,1/(1*1))
+a[2,4] ~ dnorm(0,1/(1*1))
+
+
+a[1,5] ~ dnorm(0,1/(1*1))
+a[2,5] ~ dnorm(0,1/(1*1))
+
+
+a[1,6] ~ dnorm(0,1/(1*1))
+a[2,6] ~ dnorm(0,1/(1*1))
+
+a[1,7] ~ dnorm(0,1/(1*1))
+a[2,7] ~ dnorm(0,1/(1*1))
+
+a[1,8] ~ dnorm(0,1/(1*1))
+a[2,8] ~ dnorm(0,1/(1*1))
+
+a[1,9] ~ dnorm(0,1/(1*1))
+a[2,9] ~ dnorm(0,1/(1*1))
+
+a[1,10] ~ dnorm(0,1/(1*1))
+a[2,10] ~ dnorm(0,1/(1*1))
+
+a[1,11] ~ dnorm(0,1/(1*1))
+a[2,11] ~ dnorm(0,1/(1*1))
+
+
+#variables vitesse, angle, rapport vitesse, var angle
+
+##vitesse
+k[1] ~ dgamma(0.5,2)
+k[2] ~ dgamma(3,1)
+
+
+inv_lambda[1] ~ dgamma(1,1)
+inv_lambda[2] ~ dgamma(1,1)
+
+phi[2]~ dnorm(0,1/(0.5*0.5))T(0,4)
+phi[1]~ dnorm(pi,1/(0.5*0.5))T(0,2*pi)
+
+rho[1]~ dgamma(1,1)
+rho[2]~ dgamma(1,1)
+
+##rapport distance
+
+alpha[1]~ dgamma(3,1)
+beta[1]~ dgamma(3,1)
+
+alpha[2]~ dgamma(3,1)
+beta[2]~ dgamma(3,1)
+
+##var angles
+
+mu[1]~ dgamma(3,1)
+tau[1]~ dgamma(1,1)
+
+mu[2]~ dgamma(0.5,2)
+tau[2]~ dgamma(1,1)
+
+
+
+}
+
+
+

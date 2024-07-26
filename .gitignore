@@ -1,5 +1,10 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
+*.Rproj.user
+*.Rhistory
+*.RData
+*.Ruserdata
 *.csv
+*.pdf
+outputs/*
+data/*
+figures/*
+*.Rdata
