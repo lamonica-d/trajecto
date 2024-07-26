@@ -7,6 +7,7 @@
 #' @date 2024/07/26
 
 ## 0) Install Dependencies and Load Project Addins
+# need install of JAGS https://mcmc-jags.sourceforge.io/
 devtools::install_deps(upgrade = "never")
 devtools::load_all(here::here())
 
@@ -17,9 +18,7 @@ source(here::here("script_analyses", "script02_indiv_data.R"))
 ## 2) Inference run !! COMPUTATION TIME !!
 # wouldn't advise you to run it on your own laptop/computer,
 # but on a server where you copy the entire R project
-
-# need install of JAGS https://mcmc-jags.sourceforge.io/
-# and its module "von-mises" https://github.com/yeagle/jags-vonmises
+# JAGS module "von-mises" https://github.com/yeagle/jags-vonmises needed
 
 # then use script_analyses/script03_inference.R :
 # choose which individual with l.12 : pois_id <- ...
