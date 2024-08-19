@@ -36,9 +36,9 @@ for (j in 1:6){
 dev.off()
 
 ## set number of classes/groups per probability x covariable enviro
-nb_classe=c(4,2,4,2,2,3) 
+nb_classe=c(4,4,4,3,3,3) 
 
-## plot dendrograms
+## create (& plot) dendrograms
 dend_list=list()
 for (j in 1:6){
   clust_coeff=clust_list[[j]]
@@ -48,11 +48,19 @@ for (j in 1:6){
     set("labels_cex", 0.01)
   labels(dend) <- df_rf_a$individual[clust_coeff$order] 
   dend_list[[j]]=dend
+  #plot(dend, main = varenviroxproba1[j])
 }
 
 ## match each sample to its group/class
-above=c(4,2.5,1.05,2,2,1.5)
-below=c(8,8,3,3,5,5)  
+above=c(4.8,1.9,1,1.5,1.4,1.9)
+below=c(8,6,3,3,3.9,5) 
+
+## visualise on dendrogram plot
+for (j in 1:6){
+  plot(dend_list[[j]], main = varenviroxproba1[j])
+  abline(h = above[j], lty = 2, col = "red")
+  abline(h = below[j], lty = 2, col = "red")
+}
 
 nb_gp_list=list()
 for (j in 1:6){
@@ -60,9 +68,11 @@ for (j in 1:6){
   (nb_gp=dend %>% get_nodes_attr("members", 
                                  id = which(dend %>% get_nodes_attr("height") > above[j] &dend %>% get_nodes_attr("height")< below[j])))
   
-  if (j==1|j==3) {nb_gp=c(nb_gp[1],18*replicats-sum(nb_gp[1:3]),nb_gp[2],nb_gp[3])}
-  if (j==2|j==5) {nb_gp=c(nb_gp[1:2])}
-  if (j==6) {nb_gp=c(nb_gp[1:3])}
+  if (j==1) {nb_gp=c(nb_gp[1],18*replicats-sum(nb_gp[1:3]),nb_gp[2],nb_gp[3])}
+  if (j==2) {nb_gp=c(nb_gp[1],nb_gp[3:5])}
+  if (j==3) {nb_gp=c(nb_gp[1:2],nb_gp[4:5])}
+  if (j==4|j==5) {nb_gp=c(nb_gp[1:3])}
+  if (j==6) {nb_gp=c(nb_gp[1:2],nb_gp[4])}
   
   print(sum(nb_gp))
   nb_gp_list[[j]]=nb_gp

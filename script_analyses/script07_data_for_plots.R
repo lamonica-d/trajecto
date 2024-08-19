@@ -14,10 +14,10 @@ load("outputs/matrice_proba_curves_list")
 load("outputs/mtot_list")
 
 param_names=colnames(mtot_list[[1]])
-index_lin=3:8
-index_carre=9:14
+index_lin=1:6
+index_carre=7:12
 replicats=200
-nb_classe=c(4,2,4,2,2,3)
+nb_classe=sapply(tables_list, FUN = ncol)-1  
 xvalues_plot <- xvalues <- seq(-1.5,1.5,0.2)
 
 numpoiss_vect0=c(3100, 3128, 3170, 3744 ,3121, 3183 ,3212 ,3240, 3352, 3464, 3730 ,3758 ,3632, 3786, 3835, 3849, 3856, 3870)
@@ -56,17 +56,14 @@ for (i in 1:length(numpoiss_vect0)){
     param_quantile=as.numeric(quantile(temp[,q],probs = 0.5))
     vect_a=c(vect_a,param_quantile)
   }
-  
-  #jour 19,20
-  #nuit 21,22
-  
+  #day 17,18
   for (j in 1:6){
-    if (is.odd(j)==T) {yvalues_mediane=c(yvalues_mediane,exp(vect_a[1] + vect_a[19] + vect_a[index_lin[j]] * (var_enviro-mu)/sd + vect_a[index_carre[j]] * ((var_enviro-mu)/sd)^2)/ 
-                                           (1 +  exp(vect_a[1] + vect_a[19] + vect_a[index_lin[j]] * (var_enviro-mu)/sd + vect_a[index_carre[j]] * ((var_enviro-mu)/sd)^2)))
+    if (is.odd(j)==T) {yvalues_mediane=c(yvalues_mediane,exp(vect_a[17] + vect_a[index_lin[j]] * (var_enviro-mu)/sd + vect_a[index_carre[j]] * ((var_enviro-mu)/sd)^2)/ 
+                                           (1 +  exp(vect_a[17] + vect_a[index_lin[j]] * (var_enviro-mu)/sd + vect_a[index_carre[j]] * ((var_enviro-mu)/sd)^2)))
     }
     
-    if (is.odd(j)==F) {yvalues_mediane=c(yvalues_mediane,exp(vect_a[2] + vect_a[20] + vect_a[index_lin[j]] * (var_enviro-mu)/sd + vect_a[index_carre[j]] * ((var_enviro-mu)/sd)^2)/ 
-                                           (1 +  exp(vect_a[2] + vect_a[20] + vect_a[index_lin[j]] * (var_enviro-mu)/sd + vect_a[index_carre[j]] * ((var_enviro-mu)/sd)^2)))
+    if (is.odd(j)==F) {yvalues_mediane=c(yvalues_mediane,exp(vect_a[18] + vect_a[index_lin[j]] * (var_enviro-mu)/sd + vect_a[index_carre[j]] * ((var_enviro-mu)/sd)^2)/ 
+                                           (1 +  exp(vect_a[18] + vect_a[index_lin[j]] * (var_enviro-mu)/sd + vect_a[index_carre[j]] * ((var_enviro-mu)/sd)^2)))
     
     }
     
@@ -200,18 +197,21 @@ for (i in 1:length(id_sp)){
 df_ic=df_ic[-1,]
 save(df_ic, file = "outputs/df_ggplot_ic")
 
+## set seed for repro
+set.seed(3456)
+
 ## dataframe of nycthemeral coefficients
 replicats=400
 df_rf_a1=matrix(0,ncol=8,nrow=1)
 for (i in 1:length(numpoiss_vect0)){  
   temp=mtot_list[[i]]
   print(numpoiss_vect0[i])
-  #aube 31:32
-  #crepuscule 33:34
-  #jour 35:36
-  #nuit 37:38
+  #dawn 29:30
+  #dusk 31:32
+  #day 33:34
+  #night 35:36
   
-  df_rf_a1=rbind(df_rf_a1, temp[runif(replicats,min=1, max=1500),c(31:38)])
+  df_rf_a1=rbind(df_rf_a1, temp[runif(replicats,min=1, max=1500),c(29:36)])
 }
 df_rf_a1=data.frame(df_rf_a1[-1,])
 df_rf_a1=cbind(df_rf_a1,individual=as.factor(unlist(lapply(X=id_sp, FUN=rep, times=replicats))))
@@ -238,6 +238,7 @@ df_coeff_nyct=rbind(df1,df2)
 save(df_coeff_nyct, file = "outputs/df_ggplot_coeff_nyct")
 
 ## dataframe of movement coefficients
+replicats=400
 df_rf_a1=matrix(0,ncol=16,nrow=1)
 for (i in 1:length(numpoiss_vect0)){  
   temp=mtot_list[[i]]
@@ -278,7 +279,7 @@ for (i in 1:length(numpoiss_vect0)){
   temp=mtot_list[[i]]
   print(numpoiss_vect0[i])
   
-  df_rf_a1=rbind(df_rf_a1, temp[runif(replicats,min=1, max=1500),c(19:30)])
+  df_rf_a1=rbind(df_rf_a1, temp[runif(replicats,min=1, max=1500),c(17:28)])
 }
 df_rf_a1=data.frame(df_rf_a1[-1,])
 df_rf_a1=cbind(df_rf_a1,individual=as.factor(unlist(lapply(X=id_sp, FUN=rep, times=replicats))))
@@ -308,37 +309,4 @@ df_coeff_enviro=rbind(df1,df2)
 
 save(df_coeff_enviro, file = "outputs/df_ggplot_coeff_enviro")
 
-## dataframe of intercepts
-replicats=400
-df_rf_a1=matrix(0,ncol=2,nrow=1)
-for (i in 1:length(numpoiss_vect0)){  
-  temp=mtot_list[[i]]
-  print(numpoiss_vect0[i])
-  
-  df_rf_a1=rbind(df_rf_a1, temp[runif(replicats,min=1, max=1500),c(17:18)]) 
-}
-df_rf_a1=data.frame(df_rf_a1[-1,])
-df_rf_a1=cbind(df_rf_a1,individual=as.factor(unlist(lapply(X=id_sp, FUN=rep, times=replicats))))
-rm(temp)
-df_rf_intercept=df_rf_a1[order(df_rf_a1$individual),]
-
-param=rep(rep(param_names[17:18], each=replicats),length(numpoiss_vect0))
-individu=rep(id_sp,each=replicats*2)
-
-yvalues_param=as.numeric()
-for (j in 1:length(id_sp)){
-  temp=df_rf_intercept[df_rf_intercept$individual==id_sp[j],]
-  for (i in 1:2){
-    yvalues_param=c(yvalues_param,temp[,i])
-  }
-}
-rm(temp)
-
-df_ggplot_intercept=data.frame(individu=individu, param=param, yvalues=yvalues_param)
-taille_chr_param=nchar(df_ggplot_intercept$param)
-param2=substr(df_ggplot_intercept$param, start=1, stop=1)
-comp=rep(c(rep(as.factor("p(R->M)"), replicats),rep(as.factor("p(M->R)"), replicats)),length(id_sp))
-df_ggplot_intercept=cbind(df_ggplot_intercept,param2=param2,comp=comp)
-
-save(df_ggplot_intercept, file = "outputs/df_ggplot_intercept")
 

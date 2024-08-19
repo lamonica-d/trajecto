@@ -21,8 +21,8 @@ vect_tailles=c(397,311,302,477,455,486,313,325,248,472,454,462,720,620,496,367,1
 
 varenviroxproba1=c("Water depth, p(R->M)","Water depth, p(M->R)","Flow velocity, p(R->M)","Flow velocity, p(M->R)",
                    "Upstream temperature diff, p(R->M)","Upstream temperature diff, p(M->R)")
-varenviroxproba=as.factor(rep(unlist(lapply(X=varenviroxproba1, FUN=rep, times=length(xvalues_plot))),length(id_sp)))
 xvalues_plot <- xvalues <- seq(-1.5,1.5,0.2)
+varenviroxproba=as.factor(rep(unlist(lapply(X=varenviroxproba1, FUN=rep, times=length(xvalues_plot))),length(id_sp)))
 
 ## load means and sds used to standardize environmental covariables 
 ## to navigate between standardized and true values
@@ -102,23 +102,8 @@ plot_coeff_mvt2
 dev.off()
 
 ################################################################################
-## Figure: intercepts - boxplot
-load(file="outputs/df_ggplot_intercept")
-plot_coeff_intercept<-ggplot()+ 
-  geom_abline(slope=0, intercept=0, colour="grey45", lty=2, lwd=0.8)+
-  geom_boxplot(data=df_ggplot_intercept,width=0.8,lwd=0.4,
-               aes(x=individu, y=yvalues, fill=comp ))+ 
-  labs(y="Intercept, posterior distribution", x="")+ggtitle(expression(paste(alpha)))+
-  theme_minimal()+ 
-  theme(axis.text.x = element_text( size=8, angle=90))+ 
-  guides(fill=guide_legend(""))
-
-pdf("figures/fig_param_intercept.pdf", height = 10, width = 10)
-plot_coeff_intercept
-dev.off()
-
-################################################################################
 ## Figure S2: fixed effect (nycthemeral period) - boxplot
+load(file="outputs/df_ggplot_coeff_nyct")
 plot_coeff_prm<-ggplot()+ 
   geom_boxplot(data=df_coeff_nyct[df_coeff_nyct$proba=="p(R->M)",],width=0.8,lwd=1, #1.8
                aes(x=nyct, y=yvalues_coeff, color=nyct))+ 

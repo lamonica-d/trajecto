@@ -17,10 +17,10 @@ load("outputs/matrice_proba_curves_list")
 load("outputs/mtot_list")
 
 param_names=colnames(mtot_list[[1]])
-index_lin=3:8
-index_carre=9:14
+index_lin=1:6
+index_carre=7:12
 replicats=200
-nb_classe=c(4,2,4,2,2,3)
+nb_classe=sapply(tables_list, FUN = ncol)-1  
 xvalues_plot <- xvalues <- seq(-1.5,1.5,0.2)
 
 numpoiss_vect0=c(3100, 3128, 3170, 3744 ,3121, 3183 ,3212 ,3240, 3352, 3464, 3730 ,3758 ,3632, 3786, 3835, 3849, 3856, 3870)
@@ -47,8 +47,8 @@ min_ind=read.table(file="data/raw-data/min_var_enviro_tous_par_ind.csv", header=
 max_ind=read.table(file="data/raw-data/max_var_enviro_tous_par_ind.csv", header=T, sep=",")[,-1]
 mean_ind=read.table(file="data/raw-data/mean_var_enviro_tous_par_ind.csv", header=T, sep=",")[,-1]
 
-## choix nyct period var nyct_i aube 8, crep 9, jour 10, nuit 11
-nyct_i=10
+## choix nyct period var nyct_i aube 7, crep 8, jour 9, nuit 10
+nyct_i=9
 ## si on veut la gamme de valeurs rencontrees par le poisson true_env=T
 true_env=T
 ## nombre de cases de cote
@@ -155,8 +155,8 @@ for (i in 1:18){
     
     for (e in 1:length(enviro[,1])){
       
-      p_vh1[e]=exp(mat_coeff[1,j] +mat_coeff[nyct_i,j] + mat_coeff[2,j] * enviro[e,3] + mat_coeff[3,j] * enviro[e,2] + mat_coeff[5,j] * enviro[e,3]^2 + mat_coeff[6,j] * enviro[e,2]^2)/
-        (1 +  exp(mat_coeff[1,j] +mat_coeff[nyct_i,j] + mat_coeff[2,j] * enviro[e,3] + mat_coeff[3,j] * enviro[e,2] + mat_coeff[5,j] * enviro[e,3]^2 + mat_coeff[6,j] * enviro[e,2]^2))
+      p_vh1[e]=exp(mat_coeff[nyct_i,j] + mat_coeff[2,j] * enviro[e,3] + mat_coeff[3,j] * enviro[e,2] + mat_coeff[5,j] * enviro[e,3]^2 + mat_coeff[6,j] * enviro[e,2]^2)/
+        (1 +  exp(mat_coeff[nyct_i,j] + mat_coeff[2,j] * enviro[e,3] + mat_coeff[3,j] * enviro[e,2] + mat_coeff[5,j] * enviro[e,3]^2 + mat_coeff[6,j] * enviro[e,2]^2))
       #x v 3,,6
       #y h 2,,5
     }#e

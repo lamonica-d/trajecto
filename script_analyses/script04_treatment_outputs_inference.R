@@ -13,8 +13,8 @@ numpoiss_vect0=c(3100, 3128, 3170, 3744 ,3121, 3183 ,3212 ,3240, 3352, 3464, 373
 mtot_list=list()
 for (j in 1:length(numpoiss_vect0)){
   
-  load(file.path("data", "derived-data","images_jags_inference",paste("image_inf_individual_",
-                                                                      numpoiss_vect0[j],"_v11.Rdata", sep="")))
+  load(file.path("data", "derived-data","images_jags_inference",
+        paste("image_inf_individual_",numpoiss_vect0[j],"_v11.Rdata", sep="")))
  
   ## some quick checks
   print(numpoiss_vect0[j])
@@ -22,7 +22,7 @@ for (j in 1:length(numpoiss_vect0)){
   print(fin-debut)
   autocorr.plot(jags_res[[1]], ask = F)
   plot(jags_res, trace=T, density=F)
-  #mtot_list[[j]]=rbind(jags_res[[1]],jags_res[[2]],jags_res[[3]])
+  mtot_list[[j]]=rbind(jags_res[[1]],jags_res[[2]],jags_res[[3]])
 }
 
 ## save in one file

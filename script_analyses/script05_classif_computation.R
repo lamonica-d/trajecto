@@ -19,19 +19,22 @@ load("outputs/mtot_list")
 
 param_names=colnames(mtot_list[[1]])
 
+## set seed for repro
+set.seed(3456)
+
 ## set the sample size
 replicats=200
 
 ## sample parameter values in posterior distributions for each individual
-df_rf_a1=matrix(0,ncol=16,nrow=1)
+df_rf_a1=matrix(0,ncol=14,nrow=1)
 for (i in 1:length(numpoiss_vect0)){  
   temp=mtot_list[[i]]
   print(numpoiss_vect0[i])
   
-  #jour 35:36
-  #nuit 37:38
+  #jour 33:34
+  #nuit 35:36
   
-  df_rf_a1=rbind(df_rf_a1, temp[runif(replicats,min=1, max=1500),c(17:30,35,36)]) 
+  df_rf_a1=rbind(df_rf_a1, temp[runif(replicats,min=1, max=1500),c(17:28,33,34)]) 
 }
 df_rf_a1=data.frame(df_rf_a1[-1,])
 df_rf_a1=cbind(df_rf_a1,individual=as.factor(unlist(lapply(X=id_sp, FUN=rep, times=replicats))))
@@ -41,8 +44,8 @@ rm(df_rf_a1)
 
 ## for each probability (RM or MR) x enviro covariable (temp, depth, flow) x individual x parameters sample
 ## computation of probability function
-index_lin=3:8
-index_carre=9:14
+index_lin=1:6
+index_carre=7:12
 xvalues=seq(-1.5,1.5,0.2)
 mu=0
 sd=1
@@ -54,12 +57,12 @@ for (j in 1:6){
   
   for (i in 1:(replicats*18)){
     
-    if (is.odd(j)==T) {calcul_proba <- function (x) {exp(df_rf_a[i,1] + df_rf_a[i,15] + df_rf_a[i,index_lin[j]] * ((x-mu)/sd) + df_rf_a[i,index_carre[j]] * ((x-mu)/sd)^2)/ 
-        (1 +  exp(df_rf_a[i,1] + df_rf_a[i,15] + df_rf_a[i,index_lin[j]] * ((x-mu)/sd) + df_rf_a[i,index_carre[j]] * ((x-mu)/sd)^2))}
+    if (is.odd(j)==T) {calcul_proba <- function (x) {exp(df_rf_a[i,13] + df_rf_a[i,index_lin[j]] * ((x-mu)/sd) + df_rf_a[i,index_carre[j]] * ((x-mu)/sd)^2)/ 
+        (1 +  exp(df_rf_a[i,13] + df_rf_a[i,index_lin[j]] * ((x-mu)/sd) + df_rf_a[i,index_carre[j]] * ((x-mu)/sd)^2))}
     }
     
-    if (is.odd(j)==F) {calcul_proba <- function (x) {exp(df_rf_a[i,2] + df_rf_a[i,16] + df_rf_a[i,index_lin[j]] * ((x-mu)/sd) + df_rf_a[i,index_carre[j]] * ((x-mu)/sd)^2)/ 
-        (1 +  exp(df_rf_a[i,2] + df_rf_a[i,16] + df_rf_a[i,index_lin[j]] * ((x-mu)/sd) + df_rf_a[i,index_carre[j]] * ((x-mu)/sd)^2))}
+    if (is.odd(j)==F) {calcul_proba <- function (x) {exp(df_rf_a[i,14] + df_rf_a[i,index_lin[j]] * ((x-mu)/sd) + df_rf_a[i,index_carre[j]] * ((x-mu)/sd)^2)/ 
+        (1 +  exp(df_rf_a[i,14] + df_rf_a[i,index_lin[j]] * ((x-mu)/sd) + df_rf_a[i,index_carre[j]] * ((x-mu)/sd)^2))}
     }
     
     matrice_proba_curves[i,]=calcul_proba(xvalues)
@@ -78,11 +81,11 @@ for (j in 1:6){
   
   for (i in 1:(replicats*18)){
     
-    if (is.odd(j)==T) {matrice_curves[i,]= f_derivee(a=df_rf_a[i,1]+df_rf_a[i,15], b=df_rf_a[i,index_lin[j]],
+    if (is.odd(j)==T) {matrice_curves[i,]= f_derivee(a=df_rf_a[i,13], b=df_rf_a[i,index_lin[j]],
                                                      c=df_rf_a[i,index_carre[j]], x=xvalues, mu=mu, sd=sd)
     }
     
-    if (is.odd(j)==F) {matrice_curves[i,]= f_derivee(a=df_rf_a[i,2]+df_rf_a[i,16], b=df_rf_a[i,index_lin[j]],
+    if (is.odd(j)==F) {matrice_curves[i,]= f_derivee(a=df_rf_a[i,14], b=df_rf_a[i,index_lin[j]],
                                                      c=df_rf_a[i,index_carre[j]], x=xvalues, mu=mu, sd=sd)
     }
     

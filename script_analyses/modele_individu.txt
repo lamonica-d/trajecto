@@ -19,24 +19,23 @@ model {
       ###matrice de transition
          
       T[debut[s],1,1] <- 1- T[debut[s],1,2]
-      logit(T[debut[s],1,2]) <- inprod( enviro[debut[s],1:11],a[1,1:11])
+      logit(T[debut[s],1,2]) <- inprod( enviro[debut[s],1:10],a[1,1:10])
 
       T[debut[s],2,2] <- 1- T[debut[s],2,1]
-      logit(T[debut[s],2,1]) <- inprod(enviro[debut[s],1:11],a[2,1:11])
+      logit(T[debut[s],2,1]) <- inprod(enviro[debut[s],1:10],a[2,1:10])
 	
-      enviro[debut[s],5] <- hmod_moy[debut[s]]*hmod_moy[debut[s]]
-      enviro[debut[s],6] <- vitc_moy[debut[s]]*vitc_moy[debut[s]]
-      enviro[debut[s],7] <- temp_moy[debut[s]]*temp_moy[debut[s]]
+      enviro[debut[s],4] <- hmod_moy[debut[s]]*hmod_moy[debut[s]]
+      enviro[debut[s],5] <- vitc_moy[debut[s]]*vitc_moy[debut[s]]
+      enviro[debut[s],6] <- temp_moy[debut[s]]*temp_moy[debut[s]]
 
-      enviro[debut[s],1] <- 1
-      enviro[debut[s],2] <-hmod_moy[debut[s]]
-      enviro[debut[s],3] <-vitc_moy[debut[s]]
-      enviro[debut[s],4] <-temp_moy[debut[s]]
+      enviro[debut[s],1] <-hmod_moy[debut[s]]
+      enviro[debut[s],2] <-vitc_moy[debut[s]]
+      enviro[debut[s],3] <-temp_moy[debut[s]]
 
-      enviro[debut[s],8] <- aube[debut[s]]
-      enviro[debut[s],9] <- crep[debut[s]]
-      enviro[debut[s],10] <- jour[debut[s]]
-      enviro[debut[s],11] <- nuit[debut[s]]
+      enviro[debut[s],7] <- aube[debut[s]]
+      enviro[debut[s],8] <- crep[debut[s]]
+      enviro[debut[s],9] <- jour[debut[s]]
+      enviro[debut[s],10] <- nuit[debut[s]]
      
 
    #pour le reste de la section
@@ -54,24 +53,23 @@ model {
 
           ###matrice de transition
       T[t,1,1] <- 1- T[t,1,2]
-      logit(T[t,1,2]) <- inprod( enviro[t,1:11],a[1,1:11])
+      logit(T[t,1,2]) <- inprod( enviro[t,1:10],a[1,1:10])
 
       T[t,2,2] <- 1- T[t,2,1]
-      logit(T[t,2,1]) <- inprod(enviro[t,1:11],a[2,1:11])
+      logit(T[t,2,1]) <- inprod(enviro[t,1:10],a[2,1:10])
 	
-      enviro[t,5] <- hmod_moy[t]*hmod_moy[t]
-      enviro[t,6] <- vitc_moy[t]*vitc_moy[t]
-      enviro[t,7] <- temp_moy[t]*temp_moy[t]
+      enviro[t,4] <- hmod_moy[t]*hmod_moy[t]
+      enviro[t,5] <- vitc_moy[t]*vitc_moy[t]
+      enviro[t,6] <- temp_moy[t]*temp_moy[t]
 
-      enviro[t,1] <- 1
-      enviro[t,2] <-hmod_moy[t]
-      enviro[t,3] <-vitc_moy[t]
-      enviro[t,4] <-temp_moy[t]
+      enviro[t,1] <-hmod_moy[t]
+      enviro[t,2] <-vitc_moy[t]
+      enviro[t,3] <-temp_moy[t]
 
-      enviro[t,8] <- aube[t]
-      enviro[t,9] <- crep[t]
-      enviro[t,10] <- jour[t]
-      enviro[t,11] <- nuit[t]
+      enviro[t,7] <- aube[t]
+      enviro[t,8] <- crep[t]
+      enviro[t,9] <- jour[t]
+      enviro[t,10] <- nuit[t]
    
      
    }#temps
@@ -120,9 +118,6 @@ a[2,9] ~ dnorm(0,1/(1*1))
 
 a[1,10] ~ dnorm(0,1/(1*1))
 a[2,10] ~ dnorm(0,1/(1*1))
-
-a[1,11] ~ dnorm(0,1/(1*1))
-a[2,11] ~ dnorm(0,1/(1*1))
 
 
 #variables vitesse, angle, rapport vitesse, var angle
