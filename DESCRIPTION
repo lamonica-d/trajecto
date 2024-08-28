@@ -36,4 +36,5 @@ Depends:
     rjags,
     rstatix,
     runjags,
-    viridis
+    viridis,
+    xtable
