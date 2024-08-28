@@ -1,6 +1,6 @@
 #######################################################################################
 #######################################################################################
-# Script 8 - Figures 3 + Figures S1, S2, S3, S5, S6, S7
+# Script 8 - Figures 3 + Figures S1, S2, S3, S5, S6, S7 + Table 1
 #######################################################################################
 #######################################################################################
 
@@ -11,6 +11,7 @@ library(gridExtra)
 library(png)
 library(patchwork)
 library(grid)
+library(xtable)
 
 ## set data
 numpoiss_vect0=c(3100, 3128, 3170, 3744 ,3121, 3183 ,3212 ,3240, 3352, 3464, 3730 ,3758 ,3632, 3786, 3835, 3849, 3856, 3870)
@@ -324,5 +325,26 @@ plots
 dev.off()
 
 
+################################################################################
+## Table 1: Number of dominant coallocation for each pair of fishes 
+## load data
+load("outputs/tables_list")
+
+## compute distance in a matrix
+distance_tot <- Reduce("+",lapply(tables_list,function(x) {
+  rownames(x)=x[,1]
+  as.matrix(dist(apply(x[,-1],1,which.max)))==0
+}))
+distance_tot[upper.tri(distance_tot)] <- NA_real_
+
+## get colors
+distance_tot <- apply(X = distance_tot, MARGIN = c(1,2),
+                      FUN = function(x) ifelse (is.na(x) ==F, return(paste("\\cellcolor{col",x,"}",x, sep="")), return(NA))
+)
+
+## export the table in a tex file
+print(xtable(distance_tot,caption="Number of dominant coallocation 
+             for each pair of fishes."), sanitize.text.function = identity,
+      file="figures/coallocation.tex")
 
 
