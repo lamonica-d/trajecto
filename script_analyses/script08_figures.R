@@ -51,14 +51,15 @@ panel_title_y <- as_labeller(
   c(`Flow velocity` = "(a) Flow velocity (m/s)", 
     `Upstream temperature diff` = "(b) Temperature difference (°C)",
     `Water depth` = "(c) Water depth (m)",
-    `p(M->R)` = "Switching probability Moving to Resting",
-    `p(R->M)` = "Switching probability Resting to Moving")
+    `p(R->M)` = "Switching probability Resting to Moving",
+    `p(M->R)` = "Switching probability Moving to Resting"
+    )
 )
 
 fig3 <- ggplot(grouped_df, aes(x=xtruevalues,y=q50,col=as.factor(group), fill=as.factor(group))) +
   geom_line() + 
   geom_ribbon(aes(ymin=q2.5, ymax = q97.5),col=NA, alpha =.3)+
-  facet_grid(ytitle~xtitle, scales="free_x",
+  facet_grid(factor(ytitle, levels = c("p(R->M)","p(M->R)")) ~xtitle, scales="free_x",
              labeller = panel_title_y)+
   xlab('')+ylab('')+
   theme_bw()+

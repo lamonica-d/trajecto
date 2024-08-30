@@ -23,6 +23,7 @@ Depends:
     dendextend,
     devtools,
     doParallel,
+    dplyr,
     foreach,
     geiger,
     ggplot2,
@@ -36,5 +37,6 @@ Depends:
     rjags,
     rstatix,
     runjags,
+    tidyr,
     viridis,
     xtable
