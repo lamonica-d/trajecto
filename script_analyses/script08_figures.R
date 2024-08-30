@@ -206,7 +206,7 @@ for (k in 1:6){
     if(i>4 & i<13){truc=che}
     if(i>12){truc=sil}
     barplot_list[[i]]<-ggplot(data=df_barplot_k[df_barplot_k$individu==id_sp[i],], aes(x=groupe, y=value, fill=groupe)) + 
-      geom_bar(stat = "identity") +scale_fill_hue(c = 100) + labs(y="", x="") +theme_classic()+
+      geom_bar(stat = "identity") +scale_fill_viridis_d("groupe") + labs(y="", x="") +theme_classic()+
       theme(legend.position = "none",plot.margin=unit(rep(-1,4),"lines"))+ 
       scale_y_continuous(limits=c(0,100))#+
   }
@@ -239,6 +239,7 @@ plot_derivee=list()
 for (i in 1:6){
   plot_derivee[[i]] <- ggplot(data=df_replicats[df_replicats$j==varenviroxproba1[i],], 
                               aes(x=xvalues, y=yvalues_derivee ,color = group, group=replicats))+
+    scale_color_viridis_d("group")+
     facet_wrap( ~ individu, ncol=4)+
     geom_line(lwd=0.6)+ #
     geom_hline(yintercept=0, linetype=2, color="black", linewidth=0.8)+
@@ -260,6 +261,7 @@ plot_proba_tv=list()
 for (i in 1:6){
   plot_proba_tv[[i]] <- ggplot(data=df_replicats[df_replicats$j==varenviroxproba1[i],], 
                                aes(x=xtruevalues, y=yvalues_proba ,color = group, group=replicats))+
+    scale_color_viridis_d("group")+
     facet_wrap( ~ individu, ncol=4)+
     geom_line(lwd=0.6)+
     labs(y="", x="")+ ggtitle(varenviroxproba1[i])+
@@ -279,6 +281,7 @@ plot_proba_std=list()
 for (i in 1:6){
   plot_proba_std[[i]] <- ggplot(data=df_replicats[df_replicats$j==varenviroxproba1[i],], 
                                 aes(x=xvalues, y=yvalues_proba ,color = group, group=replicats))+
+    scale_color_viridis_d("group")+
     facet_wrap( ~ individu, ncol=4)+
     geom_line(lwd=0.6)+ 
     labs(y="", x="")+ ggtitle(varenviroxproba1[i])+
@@ -300,6 +303,7 @@ load("outputs/df_ggplot_mediane")
 
 ## size class
 plots <- ggplot(data=df_mediane3, aes(x=xvalues, y=yvalues , color =group,group=individu))+
+  scale_color_viridis_d("group")+
   facet_grid( j~ size_class)+
   geom_line(lwd=1)+ 
   labs(y="", x="")+ ggtitle("")+
@@ -313,6 +317,7 @@ dev.off()
 
 ## species
 plots <- ggplot(data=df_mediane3, aes(x=xvalues, y=yvalues , color =group,group=individu))+
+  scale_color_viridis_d("group")+
   facet_grid( j~ species)+ 
   geom_line(lwd=1)+
   labs(y="", x="")+ ggtitle("")+
