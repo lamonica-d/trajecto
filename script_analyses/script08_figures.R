@@ -303,31 +303,29 @@ dev.off()
 load("outputs/df_ggplot_mediane")
 
 ## size class
-plots <- ggplot(data=df_mediane3, aes(x=xvalues, y=yvalues , color =group,group=individu))+
+plots_size <- ggplot(data=df_mediane3, aes(x=xvalues, y=yvalues , color =group,group=individu))+
   scale_color_viridis_d("group")+
   facet_grid( j~ size_class)+
   geom_line(lwd=1)+ 
-  labs(y="", x="")+ ggtitle("")+
+  labs(y="", x="")+ ggtitle("(b) Size class")+
   theme_minimal(base_size=15)+
   theme(legend.position = "none",axis.text=element_text(size=15),axis.title=element_text(size=15), 
         axis.text.x = element_text(size=12),
         axis.text.y = element_text(size=12)) 
-pdf("figures/figS7.pdf", height = 20, width = 8)
-plots
-dev.off()
 
 ## species
-plots <- ggplot(data=df_mediane3, aes(x=xvalues, y=yvalues , color =group,group=individu))+
+plots_species <- ggplot(data=df_mediane3, aes(x=xvalues, y=yvalues , color =group,group=individu))+
   scale_color_viridis_d("group")+
   facet_grid( j~ species)+ 
   geom_line(lwd=1)+
-  labs(y="", x="")+ ggtitle("")+
+  labs(y="", x="")+ ggtitle("(a) Species")+
   theme_minimal(base_size=15)+
   theme(legend.position = "none",axis.text=element_text(size=15),axis.title=element_text(size=15), 
         axis.text.x = element_text(size=12),
         axis.text.y = element_text(size=12)) 
-pdf("figures/figS7_v2.pdf", height = 20, width = 8)
-plots
+
+pdf("figures/figS7.pdf", height = 20, width = 16)
+grid.arrange(plots_species, plots_size, ncol=2)
 dev.off()
 
 
