@@ -324,7 +324,7 @@ plots_species <- ggplot(data=df_mediane3, aes(x=xvalues, y=yvalues , color =grou
         axis.text.x = element_text(size=12),
         axis.text.y = element_text(size=12)) 
 
-pdf("figures/figS7.pdf", height = 20, width = 16)
+pdf("figures/figS7.pdf", height = 18, width = 12)
 grid.arrange(plots_species, plots_size, ncol=2)
 dev.off()
 
